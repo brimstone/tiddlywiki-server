@@ -203,6 +203,7 @@ func buildinfo() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("X-License", "AGPLv3 http://www.gnu.org/licenses/agpl-3.0.txt")
+			next.ServeHTTP(w, r)
 		})
 	}
 }
